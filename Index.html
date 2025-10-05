@@ -1,0 +1,32 @@
+var board, game = new Chess();
+
+function onDragStart(source, piece, position, orientation) {
+    if (game.in_checkmate() || game.in_draw() ||
+        piece.search(/^b/) !== -1) return false;
+}
+
+function makeAIMove() {
+    fetch('/move', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({fen: game.fen()})
+    }).then(response => response.json())
+      .then(data => {
+          game.move(data.ai_move, {sloppy: true});
+          board.position(game.fen());
+      });
+}
+
+var config = {
+    draggable: true,
+    position: 'start',
+    onDragStart: onDragStart,
+    onDrop: function(source, target) {
+        var move = game.move({from: source, to: target, promotion: 'q'});
+        if (move === null) return 'snapback';
+        board.position(game.fen());
+        setTimeout(makeAIMove, 250);
+    }
+};
+
+board = Chessboard('board', config);
