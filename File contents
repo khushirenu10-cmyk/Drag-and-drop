@@ -1,0 +1,8 @@
+from stockfish import Stockfish
+
+# Make sure to put stockfish binary in the repo or use the path on server
+stockfish = Stockfish(path="stockfish")
+
+def get_ai_move(fen):
+    stockfish.set_fen_position(fen)
+    return stockfish.get_best_move()
