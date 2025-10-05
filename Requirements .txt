@@ -1,5 +1,4 @@
-fastapi
-uvicorn
+streamlit
 python-chess
 stockfish
-jinja2
+streamlit-chessboard
