@@ -1,10 +1,9 @@
-# Chess.com Rahul ♟️ - Drag & Drop Edition
+# Chess Engine Web App
 
-A Streamlit chess app with a **drag & drop chessboard** where you can play against Stockfish.
+Play against Stockfish in your browser. Deploy this repo on Render for a live app.
 
----
+## Deployment
 
-## 🚀 Run Locally
-```bash
-pip install -r requirements.txt
-streamlit run app.py
+1. Push to GitHub
+2. Connect the repo on Render
+3. Deploy → Live link will be provided
