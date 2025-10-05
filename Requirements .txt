@@ -1,4 +1,7 @@
-streamlit
-python-chess
-stockfish
-streamlit-chessboard
+services:
+  - type: web
+    name: chess-engine
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port 10000"
+    autoDeploy: true
